@@ -4,6 +4,8 @@ Welcome to the code assessment for Lucid's UI Team.
 
 This README details what we expect from you on this assessment. If you have any questions, feel free to reach out anytime.
 
+Please, use this repository to fork the project into your account and submit the link to us (by email) with the final solution when done.
+
 ## Application
 
 The purpose of this exercise is to build a [React](https://reactjs.org) application based on the provided mockups and requirements below:
@@ -39,7 +41,7 @@ An open-ended text question
 3. When the user finishes the Quiz, the UI should display a summary page with the results, including:
 
 - Number of correct answers
-- Number of incorect answers
+- Number of incorrect answers
 - Total number of questions answered
 - The final score (%)
 - A button to restart the Quiz with a different questions
