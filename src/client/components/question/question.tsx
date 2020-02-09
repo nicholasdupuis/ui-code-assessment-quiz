@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './question.css';
+import './question.scss';
 
 import Card from '@material-ui/core/Card'
 

@@ -1,0 +1,27 @@
+/** Look and feel for app **/
+body {
+    background-color: #eee;
+    font-family: sans-serif;
+}
+
+/** Global styles for re-use **/
+.app-card {
+    padding: 15px;
+
+    .app-card__title {
+        font-size: large;
+        font-weight: bold;
+    }
+    .app-card__body {
+        font-size: small;
+
+        ul {
+            padding: 0;
+            list-style: none;
+
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

@@ -4,12 +4,33 @@ import React from 'react'
 import Question from '../question/question';
 import Summary from '../summary/summary';
 
-class Quiz extends React.Component {
+interface QuizProps {
+    // None
+}
+
+interface QuizState {
+    showSummary?: boolean
+}
+
+class Quiz extends React.Component<QuizProps, QuizState> {
+
+    constructor(props: any) {
+        super(props);
+
+        this.state = {showSummary: false}
+    }
+
+    componentDidMount() {
+        console.log('hello world');
+    }
+
     render() {
         return (
             <div>
                 <Question></Question>
-                <Summary></Summary>
+                {this.state.showSummary &&
+                    <Summary></Summary>
+                }
             </div>
         );
     }
