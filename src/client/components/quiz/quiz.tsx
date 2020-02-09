@@ -1,5 +1,7 @@
 import React from 'react'
 
+import appConfig from '../AppConfig.json'
+
 // TODO: Is there a way to simplify these imports, similar to Angular's index.ts? 
 import Question from '../question/question';
 import Summary from '../summary/summary';
@@ -22,6 +24,7 @@ class Quiz extends React.Component<QuizProps, QuizState> {
 
     componentDidMount() {
         console.log('hello world');
+        console.log(appConfig.apiUrl)
     }
 
     render() {
