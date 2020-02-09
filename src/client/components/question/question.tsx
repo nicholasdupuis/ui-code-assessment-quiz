@@ -5,12 +5,15 @@ import './question.scss';
 import Card from '@material-ui/core/Card'
 import { Button } from '@material-ui/core';
 
-interface QuestionProps { }
+import { APIQuestion } from '../../interfaces/APIQuestion.interface';
+
+interface QuestionProps {
+    question: APIQuestion
+}
 
 interface QuestionState { }
 
 class Question extends React.Component<QuestionProps, QuestionState> {
-
     constructor(props: any) {
         super(props);
     }

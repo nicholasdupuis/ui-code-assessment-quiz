@@ -2,16 +2,17 @@ import React from 'react'
 
 import appConfig from '../AppConfig.json'
 
-// TODO: Is there a way to simplify these imports, similar to Angular's index.ts? 
+// TODO: Is there a way to simplify these imports, similar to Angular's index.ts?
 import Question from '../question/question';
 import Summary from '../summary/summary';
+import { APIQuestion } from '../../interfaces/APIQuestion.interface';
 
-interface QuizProps {
-    // None
-}
+interface QuizProps { }
 
 interface QuizState {
     showSummary?: boolean
+    questions?: APIQuestion[],
+    currentQuestion?: APIQuestion,
 }
 
 class Quiz extends React.Component<QuizProps, QuizState> {
@@ -19,18 +20,25 @@ class Quiz extends React.Component<QuizProps, QuizState> {
     constructor(props: any) {
         super(props);
 
-        this.state = {showSummary: false}
+        this.state = { 
+            showSummary: true,
+        }
     }
 
     componentDidMount() {
-        console.log('hello world');
-        console.log(appConfig.apiUrl)
+        fetch(appConfig.apiUrl + '/questions')
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    questions: res.results
+                });
+            })
     }
 
     render() {
         return (
             <div>
-                <Question></Question>
                 {this.state.showSummary &&
                     <Summary></Summary>
                 }
