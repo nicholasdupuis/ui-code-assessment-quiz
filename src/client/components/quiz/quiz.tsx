@@ -8,7 +8,6 @@ class Quiz extends React.Component {
     render() {
         return (
             <div>
-                Hello, this is a quiz
                 <Question></Question>
                 <Summary></Summary>
             </div>
