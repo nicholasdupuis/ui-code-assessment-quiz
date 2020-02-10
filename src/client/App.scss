@@ -28,5 +28,9 @@ body {
     }
     .app-card__footer {
         margin-top: 10px;
+
+        button {
+            float: right;
+        }
     }
 }
