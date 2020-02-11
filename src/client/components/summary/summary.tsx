@@ -1,8 +1,15 @@
 import React from 'react'
 
 import Card from '@material-ui/core/Card'
+import { QuizSummary } from '../../interfaces';
 
-class Summary extends React.Component {
+interface SummaryProps {
+  summary?: QuizSummary
+}
+
+interface SummaryState { }
+
+class Summary extends React.Component<SummaryProps, SummaryState> {
   render() {
     return (
       <div>
@@ -13,16 +20,16 @@ class Summary extends React.Component {
           <div className="app-card__body">
             <ul>
               <li>
-                Correct: 2
+                Correct: {this.props.summary!.correctAnswers}
               </li>
               <li>
-                Wrong: 1
+                Wrong: {this.props.summary!.incorrectAnswers}
                 </li>
               <li>
-                Questions answered: 3
+                Questions answered: {this.props.summary!.questionsAnswered}
               </li>
               <li>
-                Final Score: 70%
+                Final Score: {this.props.summary!.finalScore}%
               </li>
             </ul>
           </div>

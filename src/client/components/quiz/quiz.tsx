@@ -65,7 +65,6 @@ class Quiz extends React.Component<QuizProps, QuizState> {
    * Called after the next button is clicked, calculates the current summary information
    */
   getUpdatedSummary(): QuizSummary {
-    debugger;
     const currentSummary: QuizSummary = {...this.state.quizSummary};
     const isCorrect: boolean = this.state.selectedAnswer!.toLowerCase() === this.state.currentQuestion!.correct_answer!.toString().toLowerCase();
     
@@ -88,7 +87,7 @@ class Quiz extends React.Component<QuizProps, QuizState> {
     const questionsAnswered = this.state.questionsAnswered! + 1;
     const updatedSummary = this.getUpdatedSummary();
 
-      this.setState({
+    this.setState({
         questionsAnswered: questionsAnswered,
         percentComplete: (questionsAnswered / appConfig.questionsToAnswer) * 100,
         currentQuestion: this.getRandomQuestion(this.state.questions!),
@@ -135,7 +134,7 @@ class Quiz extends React.Component<QuizProps, QuizState> {
           </Question>
         }
         {this.isFinished() &&
-          <Summary></Summary>
+          <Summary summary={this.state.quizSummary}></Summary>
         }
       </div>
     );
