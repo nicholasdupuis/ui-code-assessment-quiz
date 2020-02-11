@@ -9,7 +9,8 @@ import Answers from '../answers/answers';
 
 interface QuestionProps {
   question?: APIQuestion,
-  handleNextButton?: any
+  handleNextButton?: any,
+  onChoiceSelection?: any
 }
 
 interface QuestionState {
@@ -32,9 +33,7 @@ class Question extends React.Component<QuestionProps, QuestionState> {
    */
   componentDidUpdate(prevProps: any) {
     if (prevProps.question !== this.props.question) {
-      this.setState({
-        selectedAnswer: ''
-      });
+      this.handleAnswerSelection('');
     }
   }
 
@@ -43,18 +42,25 @@ class Question extends React.Component<QuestionProps, QuestionState> {
    * @param choice
    */
   onChoiceSelect(choice: string) {
-    this.setState({
-      selectedAnswer: choice
-    });
+    this.handleAnswerSelection(choice);
+
   }
 
   /**
    * Called when the user enters text into the box
    */
   onTextfieldChange(text: string) {
+    this.handleAnswerSelection(text);
+  }
+
+  handleAnswerSelection(answer: string) {
+    // Update state for this component
     this.setState({
-      selectedAnswer: text
+      selectedAnswer: answer
     });
+
+    // Pass the selected answer to the parent Quiz component
+    this.props.onChoiceSelection(answer);
   }
 
   /** 
