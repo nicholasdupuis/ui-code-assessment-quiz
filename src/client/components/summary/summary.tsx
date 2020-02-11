@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import Card from '@material-ui/core/Card'
 import { QuizSummary } from '../../interfaces';
@@ -10,7 +10,7 @@ interface SummaryProps {
 interface SummaryState { }
 
 class Summary extends React.Component<SummaryProps, SummaryState> {
-  render() {
+  render(): ReactNode {
     return (
       <div>
         <Card className="app-card">

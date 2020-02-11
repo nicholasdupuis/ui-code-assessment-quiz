@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -23,21 +23,24 @@ interface AnswersState {
 
 class Answers extends React.Component<AnswersProps, AnswersState> {
 
-  // Update the choices when component receives a new question prop
-  componentDidUpdate(prevProps: any) {
+  /**
+   * Update the choices displayed when a new question comes up
+   * @param prevProps 
+   */
+  componentDidUpdate(prevProps: any): void {
     if (prevProps.correctAnswer !== this.props.correctAnswer) {
       this.setChoices();
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.setChoices();
   }
 
   /** 
-   * Set up the choices for the current question
+   * Sets up the choices for the current question
    */
-  setChoices() {
+  setChoices(): void {
     let choices: string[] = [];
 
     switch (this.props.questionType) {
@@ -54,13 +57,8 @@ class Answers extends React.Component<AnswersProps, AnswersState> {
         choices = ['True', 'False']
 
         break;
-      case 'text':
-        // Do nothing, array is empty already
-
-        break;
       default:
-        // Do nothing, array is empty already
-
+        // Do nothing for 'text' or any other type, array is already empty
         break;
     }
 
@@ -69,7 +67,7 @@ class Answers extends React.Component<AnswersProps, AnswersState> {
     });
   }
 
-  render() {
+  render(): ReactNode {
     return (
       <div>
         {this.props.questionType !== 'text' &&

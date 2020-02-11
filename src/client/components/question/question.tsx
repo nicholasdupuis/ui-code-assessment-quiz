@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import Card from '@material-ui/core/Card'
 import { Button } from '@material-ui/core';
@@ -26,12 +26,11 @@ class Question extends React.Component<QuestionProps, QuestionState> {
     this.onTextfieldChange = this.onTextfieldChange.bind(this);
   }
 
-
   /**
    * Reset the state of this component when we get a new question
    * @param prevProps
    */
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: any): void {
     if (prevProps.question !== this.props.question) {
       this.handleAnswerSelection('');
     }
@@ -41,36 +40,37 @@ class Question extends React.Component<QuestionProps, QuestionState> {
    * Called when the user selects an answer
    * @param choice
    */
-  onChoiceSelect(choice: string) {
+  onChoiceSelect(choice: string): void {
     this.handleAnswerSelection(choice);
-
   }
 
   /**
    * Called when the user enters text into the box
    */
-  onTextfieldChange(text: string) {
+  onTextfieldChange(text: string): void {
     this.handleAnswerSelection(text);
   }
 
-  handleAnswerSelection(answer: string) {
-    // Update state for this component
+  /**
+   * Update the state for this component and notify parent component of selected answer
+   * @param answer 
+   */
+  handleAnswerSelection(answer: string): void {
     this.setState({
       selectedAnswer: answer
     });
 
-    // Pass the selected answer to the parent Quiz component
     this.props.onChoiceSelection(answer);
   }
 
   /** 
    * Determine if 'next' button should be disabled 
    */
-  isButtonDisabled() {
+  isButtonDisabled(): boolean {
     return !this.state || (this.state && this.state.selectedAnswer!.length === 0);
   }
 
-  render() {
+  render(): ReactNode {
     return (
       <div className="question">
         {this.props.question &&
