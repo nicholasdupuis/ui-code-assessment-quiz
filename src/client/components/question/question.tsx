@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react'
-
-import Card from '@material-ui/core/Card'
-import { Button } from '@material-ui/core';
+import { Button, Card } from '@material-ui/core';
 
 import { APIQuestion } from '../../interfaces/APIQuestion.interface';
 import { decodeHTMLEntities } from '../../libs/HTMLDecoder/HTMLDecoder';

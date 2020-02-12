@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 
-import Card from '@material-ui/core/Card'
+import { Card } from '@material-ui/core'
 import { QuizSummary } from '../../interfaces';
 
 interface SummaryProps {

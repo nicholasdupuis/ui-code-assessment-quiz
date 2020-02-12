@@ -1,15 +1,13 @@
 import React, { ReactNode } from 'react'
+import { Card, Button, LinearProgress } from '@material-ui/core';
 
 import './quiz.scss';
 
-import LinearProgress from '@material-ui/core/LinearProgress';
-
+import appConfig from '../../AppConfig.json'
 // TODO: Is there a way to barrel component imports?
 import Question from '../question/question';
 import Summary from '../summary/summary';
 import { APIQuestion, QuizSummary } from '../../interfaces';
-import { Card, Button } from '@material-ui/core';
-import appConfig from '../../AppConfig.json'
 
 interface QuizProps { }
 
@@ -50,7 +48,6 @@ class Quiz extends React.Component<QuizProps, QuizState> {
     fetch(appConfig.apiUrl + '/questions')
       .then(res => res.json())
       .then(res => {
-
         this.setState({
           isLoading: false,
           questions: res.results,
@@ -102,12 +99,7 @@ class Quiz extends React.Component<QuizProps, QuizState> {
     const currentSummary: QuizSummary = { ...this.state.quizSummary };
     const isCorrect: boolean = this.state.selectedAnswer!.toLowerCase() === this.state.currentQuestion!.correct_answer!.toString().toLowerCase();
 
-    if (isCorrect) {
-      currentSummary.correctAnswers!++;
-    } else {
-      currentSummary.incorrectAnswers!++;
-    }
-
+    isCorrect ? currentSummary.correctAnswers!++ : currentSummary.incorrectAnswers!++;
     currentSummary.questionsAnswered!++;
     currentSummary.finalScore = Math.floor((currentSummary.correctAnswers! / currentSummary.questionsAnswered!) * 100);
 

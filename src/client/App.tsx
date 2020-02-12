@@ -2,10 +2,7 @@ import * as React from 'react';
 
 import Quiz from './components/quiz/quiz'
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import { AppBar, Toolbar, Typography, Container } from '@material-ui/core';
 
 export const App = () => (
     <div>
@@ -20,5 +17,4 @@ export const App = () => (
             <Quiz></Quiz>
         </Container>
     </div>
-
 );
